@@ -34,7 +34,7 @@ export default defineConfig({
     video: 'retain-on-failure',
     viewport: null,
     launchOptions: {
-      headless: false,
+      headless: true,
       // args: ['--start-fullscreen', '--start-maximized'],
     },
   },
