@@ -89,7 +89,7 @@ test.describe('Vitacare Automation', () => {
     await page.waitForTimeout(2000);
   });
 
-  test.only('4. Checkout Page', async () => {
+  test('4. Checkout Page', async () => {
     const checkoutPage = new CheckoutPage(page);
 
     // Go to cart status sidebar
