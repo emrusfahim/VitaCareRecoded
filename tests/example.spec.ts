@@ -1,5 +1,5 @@
 import { test, expect, Page, BrowserContext } from '@playwright/test';
-import { OnboardingPage } from '../pages/onboarding';
+import { OnboardingPage } from '../pages/Onboarding';
 import { CustomerProfilePage } from '../pages/CustomerProfile';
 import { ProductSearchDetails } from '../pages/ProductSearchDetails';
 import { CheckoutPage } from '../pages/CheckoutPage';
