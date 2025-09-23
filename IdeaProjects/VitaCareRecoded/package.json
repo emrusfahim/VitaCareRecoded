@@ -1,0 +1,18 @@
+{
+  "name": "practiceautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.5.2"
+  },
+  "dependencies": {
+    "@types/xlsx": "^0.0.35",
+    "xlsx": "^0.18.5"
+  }
+}
