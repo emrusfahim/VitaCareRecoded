@@ -38,7 +38,7 @@ test.describe('Vitacare Automation', () => {
     // Auth data from first row
     const { Phone: phone, OTP: otp } = rows[0] as { Phone: string; OTP: string };
     // Print phone and otp in console
-    console.log(phone, otp);
+    console.log(`Phone: ${phone}, OTP: ${otp}`);
 
     // Login
     await onboardingPage.clickLogin();
@@ -70,14 +70,22 @@ test.describe('Vitacare Automation', () => {
   test('2. Customer Profile Page', async () => {
     const customerProfilePage = new CustomerProfilePage(page);
 
+    // Load Excel data and get first sheet for auth data
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json<Record<string, any>>(sheet);
+    // Get first row data for profile info, Load First Name	Last Name	Email	Company
+    const { 'First Name': firstName, 'Last Name': lastName, Email: email, Company: company } = rows[0] as { 'First Name': string; 'Last Name': string; Email: string; Company: string };
+    // Print firstName, lastName, email, and company in console
+    console.log(`First Name: ${firstName}, Last Name: ${lastName}, Email: ${email}, Company: ${company}`);
+
     await customerProfilePage.clickCustomerInfo();
     await customerProfilePage.expectAccountTitle();
     await customerProfilePage.checkGenderMale();
-    await customerProfilePage.enterFirstname('John');
-    await customerProfilePage.enterLastname('Doe');
+    await customerProfilePage.enterFirstname(firstName);
+    await customerProfilePage.enterLastname(lastName);
     // await customerProfilePage.enterPhone('01400000001');
-    await customerProfilePage.enterEmail('john.doe@example.com');
-    await customerProfilePage.enterCompanyName('Test Company Ltd');
+    await customerProfilePage.enterEmail(email);
+    await customerProfilePage.enterCompanyName(company);
     // check newsletter subscription
     await customerProfilePage.newsLetterSubscription();
     await customerProfilePage.saveButton();
@@ -89,7 +97,7 @@ test.describe('Vitacare Automation', () => {
     const productSearchDetails = new ProductSearchDetails(page);
 
 
-        // Load Excel data
+    // Load Excel data
     const sheet = workbook.Sheets[workbook.SheetNames[1]];
     const rows = XLSX.utils.sheet_to_json<Record<string, any>>(sheet);
     // console.log(rows);
